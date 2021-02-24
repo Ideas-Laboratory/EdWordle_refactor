@@ -30,13 +30,13 @@ class Header extends PureComponent {
             {
               navList.map((item) => (
                 <Link 
+                  key={item}
                   style={{textDecoration:'none'}} 
                   to={`/${item}`}
                   onClick={() => handleNav(item)}
                 >
                   <NavItem> 
                     <CSSTransition
-                      key={item}
                       in={currentNav === item}
                       timeout={500}
                       classNames="underline"
