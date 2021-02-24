@@ -27,6 +27,7 @@ function App() {
             <Switch>
               <Fragment>
                 <Route path='/' exact component={Home} />
+                <Route path='/Home' exact component={Home} />
                 <Route path='/Create' exact component={Create} />
                 <Route path='/Guide' exact component={Guide} />
                 <Route path='/About' exact component={About} />

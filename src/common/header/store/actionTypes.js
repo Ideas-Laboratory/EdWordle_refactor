@@ -1,1 +1,1 @@
-// export const SEARCH_FOCUS = 'header/SEARCH_FOCUS';
+export const NAV_CHANGE = 'header/nav_change';
