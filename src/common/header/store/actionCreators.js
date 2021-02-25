@@ -1,2 +1,6 @@
-// import * as constants from './actionTypes';
-// import { fromJS } from 'immutable';
+import * as constants from './actionTypes';
+
+export const navChangeAction = (nextNav) => ({
+  type: constants.NAV_CHANGE,
+  nextNav
+});

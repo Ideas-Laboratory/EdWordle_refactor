@@ -3,11 +3,13 @@ import { fromJS } from 'immutable';
 // JS obj 2 immutable obj
 
 const defaultState = fromJS({
-    
+    currentNav: 'Home'
 });
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
+    case constants.NAV_CHANGE:
+      return state.set('currentNav', action.nextNav);
     default: 
       return state;
   }    

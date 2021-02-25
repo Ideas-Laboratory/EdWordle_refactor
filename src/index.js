@@ -5,7 +5,7 @@ import { GlobalStyle } from './style.js';
 
 ReactDOM.render(
   <Fragment>
-    {/* <GlobalStyle/>  */}
+    <GlobalStyle />
     <App />
   </Fragment>,
   document.getElementById('root')

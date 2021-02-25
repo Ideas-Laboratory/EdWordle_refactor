@@ -1,19 +1,56 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { actionCreators } from './store';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import {
   HeaderWrapper,
+  Logo,
+  Nav,
+  NavWrapper,
+  NavItem,
+  UnderlineSpan
 } from './style'
 
 class Header extends PureComponent {
 
+
   render() {
+
+    const navList = ['Home', 'Create', 'Guide', 'About', 'Links'];
+    const { currentNav, handleNav } = this.props;
+
     return (
       <HeaderWrapper> 
-        <Link to='/'>
-          <div> logo here</div>
-        </Link>
-        <div> other, pls use styled</div>
+        <NavWrapper>
+          <Link style={{textDecoration:'none'}} to='/'>
+            <Logo> EdWordle </Logo>
+          </Link>
+          <Nav>
+            {
+              navList.map((item) => (
+                <Link 
+                  key={item}
+                  style={{textDecoration:'none'}} 
+                  to={`/${item}`}
+                  onClick={() => handleNav(item)}
+                >
+                  <NavItem> 
+                    <CSSTransition
+                      in={currentNav === item}
+                      timeout={500}
+                      classNames="underline"
+                    >
+                      <UnderlineSpan className={ currentNav === item ? 'nav-underline' : 'nav-underline-none' }>
+                        {item}
+                      </UnderlineSpan>
+                    </CSSTransition>
+                  </NavItem>
+                </Link>
+              ))
+            }
+          </Nav>
+        </NavWrapper>
       </HeaderWrapper>
     )
   }
@@ -21,13 +58,15 @@ class Header extends PureComponent {
 
 const mapStateToProps = (state) => {
   return {
-
+    currentNav: state.getIn(['header', 'currentNav'])
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    handleNav(nextNav) {
+      dispatch(actionCreators.navChangeAction(nextNav));
+    }
   }
 }
 
