@@ -12,6 +12,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+// import GlobalFonts from './fonts/fonts';
 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -22,18 +23,19 @@ function App() {
     // <div>test</div>
     <Provider store={store}>
       <Router>
+        {/* <GlobalFonts /> */}
         <div>
           <Header />
-            <Switch>
-              <Fragment>
-                <Route path='/' exact component={Home} />
-                <Route path='/Home' exact component={Home} />
-                <Route path='/Create' exact component={Create} />
-                <Route path='/Guide' exact component={Guide} />
-                <Route path='/About' exact component={About} />
-                <Route path='/Links' exact component={Links} />
-              </Fragment>
-            </Switch>
+          <Switch>
+            <Fragment>
+              <Route path='/' exact component={Home} />
+              <Route path='/Home' exact component={Home} />
+              <Route path='/Create' exact component={Create} />
+              <Route path='/Guide' exact component={Guide} />
+              <Route path='/About' exact component={About} />
+              <Route path='/Links' exact component={Links} />
+            </Fragment>
+          </Switch>
         </div>
       </Router>
     </Provider>

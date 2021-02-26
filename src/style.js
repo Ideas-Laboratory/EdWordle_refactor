@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import RedHatTextBold from './statics/font/RedHatText-Bold.ttf';
 import RedHatTextRegular from './statics/font/RedHatText-Regular.ttf';
-
 export const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -49,7 +48,6 @@ export const GlobalStyle = createGlobalStyle`
   .dell {
     color: red;
   }
-
   @font-face {
     font-family: 'RedHatBold';
     src: url(${RedHatTextBold}) format('Truetype');
@@ -61,12 +59,3 @@ export const GlobalStyle = createGlobalStyle`
   }
 
 `;
-
-  
-// @font-face {
-//   font-family: 'red-hat-text';
-//   src: local('red-hat-text'), local('red-hat-text'),
-//   src: url('${retHatFont}) format('Truetype');
-//   font-weight: 300;
-//   font-style: normal;
-// }

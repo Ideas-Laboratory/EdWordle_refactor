@@ -21,27 +21,27 @@ class Header extends PureComponent {
     const { currentNav, handleNav } = this.props;
 
     return (
-      <HeaderWrapper> 
+      <HeaderWrapper>
         <NavWrapper>
-          <Link style={{textDecoration:'none'}} to='/'>
+          <Link style={{ textDecoration: 'none' }} to='/'>
             <Logo> EdWordle </Logo>
           </Link>
           <Nav>
             {
               navList.map((item) => (
-                <Link 
+                <Link
                   key={item}
-                  style={{textDecoration:'none'}} 
+                  style={{ textDecoration: 'none' }}
                   to={`/${item}`}
                   onClick={() => handleNav(item)}
                 >
-                  <NavItem> 
+                  <NavItem>
                     <CSSTransition
                       in={currentNav === item}
                       timeout={500}
                       classNames="underline"
                     >
-                      <UnderlineSpan className={ currentNav === item ? 'nav-underline' : 'nav-underline-none' }>
+                      <UnderlineSpan className={currentNav === item ? 'nav-underline' : 'nav-underline-none'}>
                         {item}
                       </UnderlineSpan>
                     </CSSTransition>

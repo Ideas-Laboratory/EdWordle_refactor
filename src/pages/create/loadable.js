@@ -8,8 +8,8 @@ const LoadableComponent = Loadable({
   },
 });
 
-export default class App extends Component {
+export default class Create extends Component {
   render() {
-    return <LoadableComponent/>;
+    return <LoadableComponent />;
   }
 };
