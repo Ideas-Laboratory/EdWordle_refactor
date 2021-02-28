@@ -8,7 +8,7 @@ export const HeaderWrapper = styled.div`
 
 export const NavWrapper = styled.div`
     height: 100%;
-    width: 960px;
+    width: 1200px;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
@@ -37,7 +37,7 @@ export const Nav = styled.div`
 export const NavItem = styled.div`
     width: 56px;
     line-height: 56px;
-    padding: 0 20px;
+    padding-left: 40px;
     font-size: 20px;
     cursor: pointer;
     font-family: 'RedHatRegular';
