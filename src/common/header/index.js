@@ -14,11 +14,8 @@ import {
 
 class Header extends PureComponent {
 
-
   render() {
-
-    const navList = ['Home', 'Create', 'Guide', 'About', 'Links'];
-    const { currentNav, handleNav } = this.props;
+    const { navList, currentNav, handleNav } = this.props;
 
     return (
       <HeaderWrapper>
@@ -58,7 +55,8 @@ class Header extends PureComponent {
 
 const mapStateToProps = (state) => {
   return {
-    currentNav: state.getIn(['header', 'currentNav'])
+    currentNav: state.getIn(['header', 'currentNav']),
+    navList: state.getIn(['header', 'navList'])
   }
 }
 

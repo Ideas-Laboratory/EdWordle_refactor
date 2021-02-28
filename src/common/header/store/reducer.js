@@ -3,7 +3,8 @@ import { fromJS } from 'immutable';
 // JS obj 2 immutable obj
 
 const defaultState = fromJS({
-    currentNav: 'Home'
+    currentNav: 'Home',
+    navList: ['Home', 'Create', 'Guide', 'About', 'Links']
 });
 
 const reducer = (state = defaultState, action) => {
@@ -16,3 +17,4 @@ const reducer = (state = defaultState, action) => {
 };
 
 export default reducer;
+
