@@ -4,16 +4,18 @@ export const HeaderWrapper = styled.div`
     position: relation;
     height: 56px;
     border-bottom: 1px solid #f0f0f0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 `;
 
 export const NavWrapper = styled.div`
     height: 100%;
-    width: 1200px;
-    margin: 0 auto;
+    width: 95vh;
     display: flex;
     flex-direction: row;
     align-items: center;
-    // border: 2px solid green;
+    /* border: 2px solid green; */
 `;
 
 export const Logo = styled.div`
