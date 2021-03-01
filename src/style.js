@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 import RedHatTextBold from './statics/font/RedHatText-Bold.ttf';
 import RedHatTextRegular from './statics/font/RedHatText-Regular.ttf';
+import MilknBalls from './statics/font/MilknBalls-BlackDemo-3.ttf';
+
 export const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -56,6 +58,11 @@ export const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'RedHatRegular';
     src: url(${RedHatTextRegular}) format('Truetype');
+  }
+
+  @font-face {
+    font-family: 'MilknBalls';
+    src: url(${MilknBalls}) format('Truetype');
   }
 
 `;
