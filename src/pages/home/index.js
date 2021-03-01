@@ -1,26 +1,65 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import T1img from '../../statics/img/T1_350x500.png';
+import T2img from '../../statics/img/T2_350x500.png';
+import T3img from '../../statics/img/T3_350x500.png';
 
 import {
   HomeWrapper,
-  AwesomeHeadline
+  ImageContainer,
+  ImageItem,
+  TitleContainer,
+  Title,
+  Description,
+  Image,
+  Button,
+  ActiveDivider,
+  ActiveBox
 } from './style';
 
 
 class Home extends PureComponent {
   render() {
+    const { title, description } = this.props;
+
     return (
       <HomeWrapper>
-        <AwesomeHeadline> test font ABCD </AwesomeHeadline>
-        <h1> test font ABCD </h1>
-        <div> home components here, child components need be contained in ./components, but styled in ./style</div>
+        <ImageContainer>  
+          <ImageItem className="left">
+            <Image className="image-left" src={T2img} alt=""/>
+          </ImageItem>
+          <ImageItem className="medium">
+            <Image className="image" src={T1img} alt=""/>
+          </ImageItem>
+          <ImageItem className="right">
+            <Image className="image-right" src={T3img} alt=""/>
+          </ImageItem>
+        </ImageContainer>
+        <ActiveDivider>
+          <ActiveBox/>
+        </ActiveDivider>
+        <TitleContainer>
+          <Title>
+            { title }
+          </Title>
+          <Description>
+            { description }
+          </Description>
+          <Link to={'/create'} style={{ textDecoration: 'none' }}>
+            <Button>
+              Create Now
+            </Button>
+          </Link>
+        </TitleContainer>
       </HomeWrapper>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-
+  title: state.getIn(['home', 'title']),
+  description: state.getIn(['home', 'description'])
 })
 
 const mapDispatchToProps = (dispatch) =>({
