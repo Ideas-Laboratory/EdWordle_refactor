@@ -66,4 +66,20 @@ export const UnderlineSpan = styled.span`
     &.underline-exit-active {
         border-bottom: 1px solid white;
     }
+
+    &.nav-magnify {
+        font-size: 22px;
+    }    
+    &.magnify-enter {
+        transition: all .2s ease-out;
+    }
+    &.magnify-enter-active {
+        font-size: 22px;
+    }
+    &.magnify-exit {
+        transition: all .2s ease-out;
+    }
+    &.magnify-exit-active {
+        font-size: 20px;
+    }
 `;
