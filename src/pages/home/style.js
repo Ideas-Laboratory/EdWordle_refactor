@@ -11,16 +11,16 @@ export const HomeWrapper = styled.div`
 export const ImageContainer = styled.div`
   margin: 0 auto;
   width: 100%;
-  height: 500px;
+  height: 600px;
   display: flex;
   justify-content: center;
   /* border: 1px solid green; */
 `;
 
 export const ImageItem = styled.div`
-  height: 350px;
-  width: 500px;
-  margin: 75px 75px 75px 75px;
+  height: 450px;
+  width: 650px;
+  margin: 100px 75px 75px 75px;
   border-radius: 15px;
   display: flex;
   align-items: center;
@@ -37,8 +37,8 @@ export const ImageItem = styled.div`
 `;
 
 export const Image = styled.img`
-  height: 100%;
-	height: auto;
+  width: 650px;
+	height: 450px;
   border-radius: 15px;
   border: 2px solid black;
   &.image-left {
