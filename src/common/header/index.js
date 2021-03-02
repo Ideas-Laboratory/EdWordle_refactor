@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, NavLink, Link } from 'react-router-dom';
 import { actionCreators } from './store';
 import { CSSTransition } from 'react-transition-group';
 import {
@@ -45,33 +45,18 @@ class Header extends PureComponent {
           <Nav>
             {
               navList.map((item) => (
-                <Link
+                <NavLink
+                  className="nav-item"
+                  activeClassName="active"
                   key={item}
                   style={{textDecoration: 'none'}}
                   to={`/${item}`}
-                  onClick={() => handleNav(item)}
+                  // onClick={() => handleNav(item)}
+                  onMouseEnter={() => handleMouseEnter(item)}
+                  onMouseLeave={handleMouseLeave}
                 >
-                  <NavItem 
-                    onMouseEnter={() => handleMouseEnter(item)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    <CSSTransition
-                      in={currentNav === item}
-                      timeout={500}
-                      classNames="underline"
-                    >
-                      <CSSTransition
-                        in={pointNav === item}
-                        timeout={200}
-                        classNames="magnify"
-                      >
-                        <UnderlineSpan className={this.getItemClassName(item)}>
-                          {item}
-                        </UnderlineSpan>
-                      </CSSTransition>
-                    </CSSTransition>
-                  </NavItem>
-                </Link>
+                  {item}
+                </NavLink>
               ))
             }
           </Nav>
@@ -104,3 +89,36 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
+
+          {/* {
+              navList.map((item) => (
+                <Link
+                  key={item}
+                  style={{textDecoration: 'none'}}
+                  to={`/${item}`}
+                  onClick={() => handleNav(item)}
+                >
+                  <NavItem 
+                    onMouseEnter={() => handleMouseEnter(item)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <CSSTransition
+                      in={currentNav === item}
+                      timeout={500}
+                      classNames="underline"
+                    >
+                      <CSSTransition
+                        in={pointNav === item}
+                        timeout={200}
+                        classNames="magnify"
+                      >
+                        <UnderlineSpan className={this.getItemClassName(item)}>
+                          {item}
+                        </UnderlineSpan>
+                      </CSSTransition>
+                    </CSSTransition>
+                  </NavItem>
+                </Link>
+              ))
+            } */}

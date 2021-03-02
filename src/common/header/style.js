@@ -11,10 +11,11 @@ export const HeaderWrapper = styled.div`
 
 export const NavWrapper = styled.div`
     height: 100%;
-    width: 95vh;
+    width: 1200px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
     /* border: 2px solid green; */
 `;
 
@@ -23,28 +24,29 @@ export const Logo = styled.div`
     line-height: 56px;
     color: #333;
     font-family: 'RedHatBold';
+    justify-content: left;
     // border: 2px solid red;
 `;
 
 export const Nav = styled.div`
-    height: 56px;
-    width: 100%;
+    margin-left: auto;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    // border: 2px solid blue; 
-`;
-
-export const NavItem = styled.div`
-    width: 56px;
-    line-height: 56px;
-    padding-left: 40px;
-    font-size: 20px;
-    cursor: pointer;
-    font-family: 'RedHatRegular';
-    color: black;
-    // border: 2px solid red;
+    /* border: 2px solid blue; */
+    .active {
+        padding: 2px;
+        border-bottom: 1px solid black;
+    }
+    .nav-item {
+        margin-left: 40px;
+        font-size: 20px;
+        cursor: pointer;
+        font-family: 'RedHatRegular';
+        color: black;
+        /* border: 2px solid red; */
+    }
 `;
 
 export const UnderlineSpan = styled.span`
