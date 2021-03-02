@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { actionCreators as headerActionCreators } from '../../common/header/store';
+
 import T1img from '../../statics/img/T1_350x500.png';
 import T2img from '../../statics/img/T2_350x500.png';
 import T3img from '../../statics/img/T3_350x500.png';
@@ -21,7 +23,7 @@ import {
 
 class Home extends PureComponent {
   render() {
-    const { title, description } = this.props;
+    const { title, description, changeNavItem } = this.props;
 
     return (
       <HomeWrapper>
@@ -47,7 +49,7 @@ class Home extends PureComponent {
             { description }
           </Description>
           <Link to={'/create'} style={{ textDecoration: 'none' }}>
-            <Button>
+            <Button onClick={changeNavItem}>
               Create Now
             </Button>
           </Link>
@@ -55,6 +57,7 @@ class Home extends PureComponent {
       </HomeWrapper>
     )
   }
+
 }
 
 const mapStateToProps = (state) => ({
@@ -63,7 +66,9 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) =>({
-
+  changeNavItem() {
+    dispatch(headerActionCreators.navChangeAction("Create"));
+  }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
