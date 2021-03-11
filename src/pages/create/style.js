@@ -8,10 +8,11 @@ export const ToolsWapper = styled.div`
     height:calc(100vh - 57px) ;
     float:left;
 `
-export const Tools = styled.div`
+export const Tools = styled.ul`
     display:flex;
     margin:10px;
-    height:70%;
+    height:50vh;
+    width:40%;
     flex-direction:column;
     justify-content:space-around;
     align-items:center;
@@ -28,10 +29,51 @@ export const Tools = styled.div`
 		border-top: 1px solid rgba(0, 0, 0, 0.1);
 		border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     }
+    &>li {
+        display:flex;
+        font-family:"RedHatBold";
+        border: 0;
+        width:70%;
+        justify-content:center;
+        align-items:center;
+        height: 2vh;
+        background:#FFFFFF;
+        border-radius:22px;
+        padding: 20px;
+        /* text-overflow: hidden; */
+        white-space:nowrap;
+        &:hover{
+            box-shadow:0px 0px 30px rgba(0, 0, 0, 0.1);
+            padding: 22px 25px 22px 25px;
+        }
+        &:hover ul{
+            background:pink;
+            display:block;
+        }
+        transition: all .2s ease-out;
+    }
 `
-export const Item = styled.div`
-    display:flex;
-    font-family:"RedHat";
+export const EditPanel = styled.ul`
+    position:absolute;
+    display: none;
+    background:rgba(0, 0, 0, 0.1);
+    list-style-type:none;
+    margin-left:17%;
+    z-index:10;
+    border-radius:10px;
+    li {
+        white-space:nowrap;
+        background: #FFF;
+        border:0;
+        height: 3vh;
+        border-radius:8px;
+        margin:10px;
+        padding: 10px;
+        font-family:"RedHat";
+        display: flex;
+        justify-content:center;
+        align-items:center;
+    }
 `
 export const BoardWapper = styled.div`
     display:flex;
