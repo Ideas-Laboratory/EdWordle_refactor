@@ -5,7 +5,7 @@ import { fromJS } from 'immutable';
 const defaultState = fromJS({
     currentNav: 'Home',
     pointNav: '',
-    navList: ['Home', 'Create', 'Guide', 'About', 'Links']
+    navList: ['home', 'create', 'guide', 'about', 'links']
 });
 
 const reducer = (state = defaultState, action) => {

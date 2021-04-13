@@ -1,69 +1,83 @@
-import React, { PureComponent } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useRouteMatch } from 'react-router-dom';
 import { actionCreators } from './store';
-import { CSSTransition } from 'react-transition-group';
+import {useSpring, animated} from 'react-spring';
 import {
   HeaderWrapper,
   Logo,
   Nav,
   NavWrapper,
-  NavItem,
-  UnderlineSpan
 } from './style'
 
-class Header extends PureComponent {
-
-  getItemClassName(item) {
-    const { currentNav, pointNav } = this.props;
-    let ans = "nav-underline-none";
-    if (currentNav === item) {
-      ans = "nav-underline"
-    }
-    if (pointNav === item) {
-      ans += " nav-magnify"
-    }
-    return ans;
+const getItemClassName = (item) => {
+  const { currentNav, pointNav } = this.props;
+  let ans = "nav-underline-none";
+  if (currentNav === item) {
+    ans = "nav-underline"
   }
-
-  render() {
-    const { 
-      navList, 
-      currentNav, 
-      handleNav, 
-      handleMouseEnter,
-      handleMouseLeave,
-      pointNav
-    } = this.props;
-
-    return (
-      <HeaderWrapper>
-        <NavWrapper>
-          <Link style={{textDecoration: 'none'}} to='/'>
-            <Logo> EdWordle </Logo>
-          </Link>
-          <Nav>
-            {
-              navList.map((item) => (
-                <NavLink
-                  className="nav-item"
-                  activeClassName="active"
-                  key={item}
-                  style={{textDecoration: 'none'}}
-                  to={`/${item}`}
-                  // onClick={() => handleNav(item)}
-                  onMouseEnter={() => handleMouseEnter(item)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  {item}
-                </NavLink>
-              ))
-            }
-          </Nav>
-        </NavWrapper>
-      </HeaderWrapper>
-    )
+  if (pointNav === item) {
+    ans += " nav-magnify"
   }
+  return ans;
+}
+
+const SpringItem = (underlineNav, item) => {
+  console.log(`underlineNav: ${underlineNav}, item: ${item}`);
+  const underlineProps = useSpring({
+    from: { 
+      borderBottom: '1px solid white'
+    },
+    borderBottom: underlineNav === item ? '1px solid black' : '1px solid white',
+  });
+
+  return (
+    <animated.span style={underlineProps}>
+      { item.charAt(0).toUpperCase() + item.slice(1) }
+    </animated.span>
+  )
+}
+
+const InitMatch = (item) => {
+  const [ underlineNav, toggleUnderline ] = useState('');
+  const match = useRouteMatch('/' + item);
+  useEffect(() => toggleUnderline(item), [ match ]);
+  return SpringItem(underlineNav, item);
+}
+
+const Header = (props) => {
+
+  const { 
+    navList,
+    handleMouseEnter,
+    handleMouseLeave
+  } = props;
+  
+  return (
+    <HeaderWrapper>
+      <NavWrapper>
+        <Link style={{textDecoration: 'none'}} to='/'>
+          <Logo> EdWordle </Logo>
+        </Link>
+        <Nav>
+          {
+            navList.map((item) => (
+              <NavLink
+                className="nav-item"
+                key={item}
+                style={{textDecoration: 'none'}}
+                to={`/${item}`}
+                onMouseEnter={() => handleMouseEnter(item)}
+                onMouseLeave={handleMouseLeave}
+              >
+                { InitMatch(item) }
+              </NavLink>
+            ))
+          }
+        </Nav>
+      </NavWrapper>
+    </HeaderWrapper>
+  )
 }
 
 const mapStateToProps = (state) => {

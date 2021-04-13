@@ -35,11 +35,9 @@ export const Nav = styled.div`
     justify-content: flex-end;
     align-items: center;
     /* border: 2px solid blue; */
-    .active {
-        padding: 2px;
-        border-bottom: 1px solid black;
-    }
     .nav-item {
+        box-sizing: border-box;
+        width: 60px;
         margin-left: 40px;
         font-size: 20px;
         cursor: pointer;
@@ -49,39 +47,39 @@ export const Nav = styled.div`
     }
 `;
 
-export const UnderlineSpan = styled.span`
-    &.nav-underline {
-        border-bottom: 1px solid black;
-    }    
-    &.nav-underline-none {
-        border-bottom: 1px solid white;
-    }
-    &.underline-enter {
-        transition: all .4s ease-in;
-    }
-    &.underline-enter-active {
-        border-bottom-color: black;
-    }
-    &.underline-exit {
-        transition: all .2s ease-out;
-    }
-    &.underline-exit-active {
-        border-bottom: 1px solid white;
-    }
+// export const UnderlineSpan = styled.span`
+//     &.nav-underline {
+//         border-bottom: 1px solid black;
+//     }    
+//     &.nav-underline-none {
+//         border-bottom: 1px solid white;
+//     }
+//     &.underline-enter {
+//         transition: all .4s ease-in;
+//     }
+//     &.underline-enter-active {
+//         border-bottom-color: black;
+//     }
+//     &.underline-exit {
+//         transition: all .2s ease-out;
+//     }
+//     &.underline-exit-active {
+//         border-bottom: 1px solid white;
+//     }
 
-    &.nav-magnify {
-        font-size: 22px;
-    }    
-    &.magnify-enter {
-        transition: all .2s ease-out;
-    }
-    &.magnify-enter-active {
-        font-size: 22px;
-    }
-    &.magnify-exit {
-        transition: all .2s ease-out;
-    }
-    &.magnify-exit-active {
-        font-size: 20px;
-    }
-`;
+//     &.nav-magnify {
+//         font-size: 22px;
+//     }    
+//     &.magnify-enter {
+//         transition: all .2s ease-out;
+//     }
+//     &.magnify-enter-active {
+//         font-size: 22px;
+//     }
+//     &.magnify-exit {
+//         transition: all .2s ease-out;
+//     }
+//     &.magnify-exit-active {
+//         font-size: 20px;
+//     }
+// `;
