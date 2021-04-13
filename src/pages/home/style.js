@@ -5,22 +5,24 @@ export const HomeWrapper = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
   /* border: 2px solid red; */
 `;
 
 export const ImageContainer = styled.div`
-  margin: 0 auto;
+  margin: 20px auto;
+  height: 500px;
   width: 100%;
-  height: 600px;
   display: flex;
   justify-content: center;
   /* border: 1px solid green; */
 `;
 
 export const ImageItem = styled.div`
-  height: 450px;
-  width: 650px;
-  margin: 100px 75px 75px 75px;
+  height: 350px;
+  width: 600px;
+  margin: auto 50px;
   border-radius: 15px;
   display: flex;
   align-items: center;
@@ -37,10 +39,10 @@ export const ImageItem = styled.div`
 `;
 
 export const Image = styled.img`
-  width: 650px;
-	height: 450px;
+	height: auto;
+  width: 100%;
   border-radius: 15px;
-  border: 2px solid black;
+  border: 2px solid #808080;
   &.image-left {
     mask: linear-gradient(90deg, transparent, #000);
   }
@@ -50,9 +52,9 @@ export const Image = styled.img`
 `;
 
 export const ActiveDivider = styled.div`
-  margin: 0 auto;
+  margin: 20px auto;
   width: 100%;
-  height: 100px;
+  height: 0px;
   display: flex;
   justify-content: center;
   /* border: 1px solid green; */
@@ -61,13 +63,12 @@ export const ActiveDivider = styled.div`
 export const ActiveBox = styled.div`
   width: 50%;
   height: 50%;
-  border-bottom: 2px solid black;
-
+  border-bottom: 2px solid #808080;
 `;
 
 
 export const TitleContainer = styled.div`
-  margin: 0 auto;
+  margin: 30px auto;
   width: 100%;
   height: 500px;
   display: flex;
@@ -77,7 +78,7 @@ export const TitleContainer = styled.div`
 `;
 
 export const Title = styled.div`
-  margin-top: 10px;
+  margin-top: 20px;
   font-size: 100px;
   font-family: 'MilknBalls';
 `;
