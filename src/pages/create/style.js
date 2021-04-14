@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-export const ToolsWapper = styled.div`
+export const ToolsWrapper = styled.div`
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -33,7 +33,7 @@ export const Item = styled.div`
     display:flex;
     font-family:"RedHat";
 `
-export const BoardWapper = styled.div`
+export const BoardWrapper = styled.div`
     display:flex;
     /* float:left; */
     /* background:red; */
