@@ -45,6 +45,7 @@ export const Tools = styled.ul`
         &:hover{
             box-shadow:0px 0px 30px rgba(0, 0, 0, 0.1);
             padding: 22px 25px 22px 25px;
+            cursor:pointer;
         }
         &:hover ul{
             background:pink;
@@ -83,8 +84,7 @@ export const BoardWapper = styled.div`
     align-items:center;
     width:80%;
     height:calc(100vh - 57px) ;
-    canvas{
-        display:flex;
+    .play-ground {
         width:90%;
         left:10%;
         height:80%;
@@ -103,11 +103,6 @@ export const CreateStyle = styled.div`
         float:left;
     }
     .canvasContainer{
-        display:flex;
-        /* float:left; */
-        /* background:red; */
-        /* justify-content:center; */
-        align-items:center;
         width:80%;
         height:calc(100vh - 57px) ;
     }
