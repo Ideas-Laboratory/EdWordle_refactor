@@ -100,7 +100,7 @@ export default class CanvasBoard extends React.Component {
             constraints.push(elastic);
         }
         World.add(engine.world, blocks);
-        // World.add(engine.world, constraints);
+        World.add(engine.world, constraints);
 
         // add mouse control
         var mouse = Mouse.create(render.canvas),
@@ -118,15 +118,14 @@ export default class CanvasBoard extends React.Component {
 
         Matter.Runner.run(engine);
 
-        setTimeout(()=>{
-            blocks.forEach(item =>{
-                Matter.Body.setStatic(item, true);
-            })
-            console.log("freeze")
-        }, 3000)
+        // setTimeout(()=>{
+        //     blocks.forEach(item =>{
+        //         Matter.Body.setStatic(item, true);
+        //     })
+        //     console.log("freeze")
+        // }, 3000)
 
         Render.run(render);
-        
     }
     render() {
         return (
@@ -188,4 +187,24 @@ const measureTextH_W = (ctx, left, top, width, height, fontsize, fontname, txt)=
 
     // We screwed something up...  What do you expect from free code?
     return {height:-1,width:-1,desent:-1};
+}
+const findNeighbor = (bodies)=>{
+    let neighbors = [];
+    bodies.forEach((body1,i)=>{
+        bodies.forEach((body2,j)=>{
+            if(i >= j) return;
+            let neighborOfBody1 = Matter.Query.ray(
+                [body2],{
+                    x : body1.position.x, 
+                    y : body1.position.y
+                },{
+                    x : body2.position.x,
+                    y : body2.position.y
+                }
+            )
+            if(neighborOfBody1.size() !== 0){
+                neighbors[body1].push(neighborOfBody1.get(0));
+            }
+        })
+    })
 }

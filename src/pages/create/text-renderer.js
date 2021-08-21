@@ -823,9 +823,9 @@ export default Render;
                     c.fillStyle=color;
                     c.font = fontsize+'px '+fontfamily;
                     c.translate(position.x, position.y);
-                    c.rotate(angle);
+                    // c.rotate(angle);
                     c.fillText(content,0,0);
-                    c.rotate(-angle);
+                    // c.rotate(-angle);
                     c.translate(-position.x, -position.y);
                 }
             }
