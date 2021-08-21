@@ -1,49 +1,111 @@
-import React, { PureComponent } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { NavLink, Link, useRouteMatch } from 'react-router-dom';
 import { actionCreators } from './store';
-import { CSSTransition } from 'react-transition-group';
+import {useSpring, animated} from 'react-spring';
 import {
   HeaderWrapper,
   Logo,
   Nav,
   NavWrapper,
-  NavItem,
-  UnderlineSpan
 } from './style'
 
-class Header extends PureComponent {
-
-  getItemClassName(item) {
-    const { currentNav, pointNav } = this.props;
-    let ans = "nav-underline-none";
-    if (currentNav === item) {
-      ans = "nav-underline"
-    }
-    if (pointNav === item) {
-      ans += " nav-magnify"
-    }
-    return ans;
+const getItemClassName = (item) => {
+  const { currentNav, pointNav } = this.props;
+  let ans = "nav-underline-none";
+  if (currentNav === item) {
+    ans = "nav-underline"
   }
+  if (pointNav === item) {
+    ans += " nav-magnify"
+  }
+  return ans;
+}
 
-  render() {
-    const { 
-      navList, 
-      currentNav, 
-      handleNav, 
-      handleMouseEnter,
-      handleMouseLeave,
-      pointNav
-    } = this.props;
+const SpringItem = (underlineNav, item) => {
+  console.log(`underlineNav: ${underlineNav}, item: ${item}`);
+  const underlineProps = useSpring({
+    from: { 
+      borderBottom: '1px solid white'
+    },
+    borderBottom: underlineNav === item ? '1px solid black' : '1px solid white',
+  });
 
-    return (
-      <HeaderWrapper>
-        <NavWrapper>
-          <Link style={{textDecoration: 'none'}} to='/'>
-            <Logo> EdWordle </Logo>
-          </Link>
-          <Nav>
-            {
+  return (
+    <animated.span style={underlineProps}>
+      { item.charAt(0).toUpperCase() + item.slice(1) }
+    </animated.span>
+  )
+}
+
+const InitMatch = (item) => {
+  const [ underlineNav, toggleUnderline ] = useState('');
+  const match = useRouteMatch('/' + item);
+  useEffect(() => toggleUnderline(item), [ match ]);
+  return SpringItem(underlineNav, item);
+}
+
+const Header = (props) => {
+
+  const { 
+    navList,
+    handleMouseEnter,
+    handleMouseLeave
+  } = props;
+  
+  return (
+    <HeaderWrapper>
+      <NavWrapper>
+        <Link style={{textDecoration: 'none'}} to='/'>
+          <Logo> EdWordle </Logo>
+        </Link>
+        <Nav>
+          {
+            navList.map((item) => (
+              <NavLink
+                className="nav-item"
+                key={item}
+                style={{textDecoration: 'none'}}
+                to={`/${item}`}
+                onMouseEnter={() => handleMouseEnter(item)}
+                onMouseLeave={handleMouseLeave}
+              >
+                { InitMatch(item) }
+              </NavLink>
+            ))
+          }
+        </Nav>
+      </NavWrapper>
+    </HeaderWrapper>
+  )
+}
+
+const mapStateToProps = (state) => {
+  return {
+    currentNav: state.getIn(['header', 'currentNav']),
+    navList: state.getIn(['header', 'navList']),
+    pointNav: state.getIn(['header', 'pointNav'])
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleNav(nextNav) {
+      dispatch(actionCreators.navChangeAction(nextNav));
+    },
+    handleMouseEnter(item) {
+      dispatch(actionCreators.magnifyAction(item));
+    },
+    handleMouseLeave() {
+      dispatch(actionCreators.nonMagnifyAction());
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
+
+          {/* {
               navList.map((item) => (
                 <Link
                   key={item}
@@ -73,34 +135,4 @@ class Header extends PureComponent {
                   </NavItem>
                 </Link>
               ))
-            }
-          </Nav>
-        </NavWrapper>
-      </HeaderWrapper>
-    )
-  }
-}
-
-const mapStateToProps = (state) => {
-  return {
-    currentNav: state.getIn(['header', 'currentNav']),
-    navList: state.getIn(['header', 'navList']),
-    pointNav: state.getIn(['header', 'pointNav'])
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    handleNav(nextNav) {
-      dispatch(actionCreators.navChangeAction(nextNav));
-    },
-    handleMouseEnter(item) {
-      dispatch(actionCreators.magnifyAction(item));
-    },
-    handleMouseLeave() {
-      dispatch(actionCreators.nonMagnifyAction());
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+            } */}
